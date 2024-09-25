@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('category');
-            $table->string('restriction')
+            $table->string('restriction');
+            $table->timestamps();
         });
     }
 
