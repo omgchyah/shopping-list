@@ -20,10 +20,10 @@
                 
     </head>
 
-    <body class="mb-4">
+    <body class="mb-4 bg-gray-300">
        <!-- Navbar -->
         <x-navbar /> 
-        @if (Route::has('login'))
+        <!-- @if (Route::has('login'))
                             <nav class="flex justify-end flex-1 -mx-3">
                                 @auth
                                     <a
@@ -50,13 +50,15 @@
                                     @endif
                                 @endauth
                             </nav>
-                        @endif
+                        @endif -->
                     </header>
                 </div>
             </div>
         </div>
         <main class="flex items-center justify-center h-screen p-4">
-            <h5 class="text-4xl text-center text-white font-courier">Welcome to your Shopping List Manager</h5>                        
+            <div class="block p-4 m-4 font-mono bg-gray-200 bg-center rounded-lg shadow-md max-w-prose dark:text-gray-300">
+                <h5 class="font-mono text-4xl text-center">Welcome to your Shopping List Manager</h5>
+            </div>                       
         </main>
     </body>
 </html>
