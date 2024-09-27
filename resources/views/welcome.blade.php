@@ -3,11 +3,26 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Shopping List</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            courier: ['"Courier Prime"', 'monospace'],
+                        }
+                    }
+                }
+            }
+        </script>
+        <link href="https://fonts.cdnfonts.com/css/courier-prime" rel="stylesheet">
+                
     </head>
-    
-    <body>
+
+    <body class="mb-4">
+       <!-- Navbar -->
+        <x-navbar /> 
         @if (Route::has('login'))
                             <nav class="flex justify-end flex-1 -mx-3">
                                 @auth
@@ -37,14 +52,11 @@
                             </nav>
                         @endif
                     </header>
-
-                    <main class="mt-6">
-                        
-                    </main>
-
-
                 </div>
             </div>
         </div>
+        <main class="flex items-center justify-center h-screen p-4">
+            <h5 class="text-4xl text-center text-white font-courier">Welcome to your Shopping List Manager</h5>                        
+        </main>
     </body>
 </html>
