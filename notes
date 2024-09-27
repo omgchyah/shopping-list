@@ -21,3 +21,8 @@ Now, you can use sail as a shortcut directly in your Visual Studio Code terminal
 To create API scaffolding with passport package:
 
 sail php artisan api:install --passport
+
+I installed Breeze to authenticate user
+Created migrations
+
+Create the navbar and the welcome page
