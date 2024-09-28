@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ShoppingList;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,10 @@ class ItemFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
-            //
+            'name' => $this->faker->word(),'quantity' => $this->faker->randomNumber(1, 10),
+            'shopping_list_id' => ShoppingList::factory()        
         ];
     }
 }

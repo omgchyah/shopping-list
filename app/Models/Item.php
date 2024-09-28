@@ -12,8 +12,14 @@ class Item extends Model
 {
     use HasFactory;
 
-    public function shoppingList(): HasMany
+    protected $fillable = [
+        'name',
+        'quantity',
+        'shopping_list_id',
+    ];
+
+    public function shoppingList(): BelongsTo
     {
-        return $this->hasMany(ShoppingList::class);
+        return $this->belongsTo(ShoppingList::class);
     }
 }

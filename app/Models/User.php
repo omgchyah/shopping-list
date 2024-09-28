@@ -22,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -52,8 +53,4 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(ShoppingList::class);
     }
 
-    public function item(): HasMany
-    {
-        return $this->hasMany(Item::class);
-    }
 }
