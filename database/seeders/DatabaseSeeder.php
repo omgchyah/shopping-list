@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->has(ShoppingList::factory()->has(Item::factory()->count(5), 'items'), 'shoppingList')->create();
+        User::factory(10)->has(ShoppingList::factory()->has(Item::factory()->count(5)))->create();
 
         User::factory()->create([
             'name' => 'admin',
