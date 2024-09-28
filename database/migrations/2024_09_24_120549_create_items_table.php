@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('category');
-            $table->string('restriction');
+            $table->string('name');
+            $table->integer('quantity');
             $table->timestamps();
+            $table->unsignedBigInteger('shopping_list_id');
+
+            $table->foreign('shopping_list_id')->references('id')->on('shopping_lists')->onDelete('cascade');
         });
     }
 
