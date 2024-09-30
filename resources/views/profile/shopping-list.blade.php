@@ -11,7 +11,7 @@
             
             @if($shoppingList && $shoppingList->items->count() > 0)
             <!-- table -->
-                <table class="min-w-full text-gray-900 dark:text-gray-100">
+                <table id="sortable-table" class="min-w-full text-gray-900 dark:text-gray-100">
                     <thead>
                         <tr>
                             <th class="px-4 py-2 text-left text-gray-900 border-b dark:text-gray-100">
@@ -35,18 +35,20 @@
                                 {{ $item->quantity }}
                             </td>
                             <td class="px-4 py-2 text-right text-gray-900 border-b dark:text-gray-100">
-                                <table>
-                                <tr>
-                                    <a href="{{ url('/shopping-list/' . $item->id . '/edit') }}" class="text-blue-500 hover:text-blue-700">
+                                <div>
+                                    <a href="{{ route('shopping-list.editItem', ['id' => $item->id]) }}" class="text-blue-500 hover:text-blue-700">
                                         Edit
                                     </a>
-                                </tr>
-                                <tr>
-                                    <a href="{{ url('/shopping-list/' . $item->id . '/Delete') }}" class="text-blue-500 hover:text-blue-700">
-                                        Delete
-                                    </a>
-                                </tr>
-                                </table>
+                                </div>
+                                <div>
+                                    <form action="{{ route('shopping-list.deleteItem', ['id' => $item->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-blue-500 hover:text-blue-700 delete-link">
+                                            Delete
+                                        </button>
+                                    </form> 
+                                </div>
                             </td>
                         </tr>
                         @endforeach
@@ -60,9 +62,37 @@
                     </div>
                 </div>
                 @endif
-                    
+                <form action="{{ route('shopping-list.createItem') }}" method="POST">
+                    @csrf
+                    <div class="flex justify-end mt-4">
+                        <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
+                            {{ __('Add Item') }}
+                        </button>
+                    </div>
+                </form>                  
 
             </div>
         </div>
-    </div> 
+    </div>
+
+    <script>
+        // Wait until the page is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all the elements with the class 'delete-link'
+            const deleteButtons = document.querySelectorAll('.delete-link');
+    
+            // Loop over each delete button
+            deleteButtons.forEach(function(button) {
+                // Add an event listener for the 'click' event
+                button.addEventListener('click', function(event) {
+                    // Show a confirmation dialog
+                    if (!confirm('Are you sure you want to delete this item?')) {
+                        // If the user cancels, prevent form submission
+                        event.preventDefault();
+                    }
+                });
+            });
+        });
+    </script>
+    
 </x-app-layout>
